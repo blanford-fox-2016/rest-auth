@@ -4,8 +4,9 @@ let models = require('../models');
 let user = models.User;
 let Sequelize = require('sequelize');
 let userController = require('../controllers/userController.js')
+let jwt = require('express-jwt');
 
-router.get('/', userController.read);
+router.get('/', jwt({secret: 'secret'}), userController.read);
 
 router.get('/:id', userController.readOne);
 

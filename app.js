@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var api_users = require('./routes/api_users')
+var api_users = require('./routes/api_users');
+var jwt = require('express-jwt');
 
 var app = express();
 
@@ -23,6 +24,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(jwt({
+  secret: 'secret',
+  credentialsRequired: false,
+  getToken: function fromHeaderOrQuerystring (req) {
+    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+        return req.headers.authorization.split(' ')[1];
+    } else if (req.query && req.query.token) {
+      return req.query.token;
+    }
+    return null;
+  }
+}));
+
 app.use('/', routes);
 app.use('/api/users', api_users);
 app.use('/users', users);
@@ -33,7 +47,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
 // error handlers
 
 // development error handler
