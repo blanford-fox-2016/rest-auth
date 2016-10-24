@@ -86,7 +86,35 @@ How to start server :
 ## Directory :
 
 ```
-
+.
+├── README.md
+├── app.js
+├── bin
+│   └── www
+├── config
+│   └── config.json
+├── controller
+│   └── index_controller.js
+├── migrations
+│   └── 20161024063240-create-users.js
+├── models
+│   ├── index.js
+│   └── users.js
+├── package.json
+├── public
+│   ├── images
+│   ├── javascripts
+│   └── stylesheets
+├── routes
+│   ├── index.js
+│   └── users.js
+├── seeders
+│   └── 20161024074904-admin_seed.js
+└── views
+    ├── error.jade
+    ├── index.jade
+    ├── layout.jade
+    └── register.jade
 
 ```
 ************************************
