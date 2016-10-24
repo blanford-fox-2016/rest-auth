@@ -30,9 +30,9 @@ npm install --save pg
 ## curl command
 | Method          | curl command                                                                                                                                     |
 | --------------- | --------------- |
-| Get Token         | curl -X POST http://localhost:3000/api/auth -d "username='USERNAME'&password='PASWORD'" |
-| View User         | curl -X GET http://localhost:3000/api/users?token=TOKEN |
-| View Single User  | curl -X GET http://localhost:3000/api/users/IDUSER/?token=TOKEN |
-| Add               | curl -X POST http://localhost:3000/api/users/?token=TOKEN -d "username='USERNAME'&fullname='FULLNAME'"|
-| Update            | curl -X PUT http://localhost:3000/api/users/IDUSER?token=TOKEN -d "username='USERNAME'&fullname='FULLNAME'"|
-| Delete            | curl -X DELETE http://localhost:3000/api/users/IDUSER?token=TOKEN |
+| Get Token         | curl -X POST http://localhost:3000/api/auth -d "username=USERNAME&password=PASWORD" |
+| View User         | curl -X GET http://localhost:3000/api/users --header "authorization: bearer TOKEN" |
+| View Single User  | curl -X GET http://localhost:3000/api/users/IDUSER --header "authorization: bearer TOKEN" |
+| Add               | curl -X POST http://localhost:3000/api/users --header "authorization: bearer TOKEN" -d "username=USERNAME&fullname=FULLNAME&password=PASSWORD"|
+| Update            | curl -X PUT http://localhost:3000/api/users/IDUSER --header "authorization: bearer TOKEN" -d "username=USERNAME&fullname=FULLNAME&password=PASSWORD"|
+| Delete            | curl -X DELETE http://localhost:3000/api/users/IDUSER --header "authorization: bearer TOKEN" |
