@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  nav.navbar.navbar-inverse
+    .container-fluid
+      .navbar-header
+        a.navbar-brand(href='/') REST-AUTH
+      ul.nav.navbar-nav
+        li.active
+          a(href='/') Register
+        li
+          a(href='/api/login') Login
+        li
+          a(href='/api/users') List
+        li
+          a(href='/api/auth') Auth
+
+  .container
+    h1= title
+    p Welcome to #{title}
+    form(method='POST', action='/api/users')
+      .form-group
+        label(for='exampleInputUsername') Username
+        input#exampleInputUsername.form-control(type='text', placeholder='Username', name='username')
+      .form-group
+        label(for='exampleInputPassword') Password
+        input#exampleInputPassword.form-control(type='password', placeholder='Password', name='password')
+      .form-group
+        label(for='exampleInputEmail') Email
+        input#exampleInputEmail.form-control(type='email', placeholder='Email', name='email')
+      .form-group
+        label(for='exampleInputWebsite') Website
+        input#exampleInputWebsite.form-control(type='text', placeholder='Website', name='website')
+
+      button.btn.btn-default(type='submit') Submit
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
+
+  .container
+    if dbcontent
+      table.table.table-hover
+        thead
+          tr
+            th Link
+            th Short link
+            th click_count
+        each obj in dbcontent
+          tbody
+            tr
+              td #{obj.link}
+              td
+                a(href='/'+obj.name target='_blank') cool/#{obj.name}
+              td #{obj.click_count}
