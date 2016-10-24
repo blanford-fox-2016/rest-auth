@@ -35,7 +35,7 @@ router.put('/api/users/:id', jwte({secret:'ada'}), users_controller.updateUserBy
 // /api/users/:id
 router.delete('/api/users/:id', jwte({secret:'ada'}), users_controller.deleteUserById);
 
-
+// ka sudah neh, saya kangen ama ka
 
 
 
