@@ -1,5 +1,7 @@
 var models = require('../models');
 var user = models.User;
+var jwt = require('jsonwebtoken');
+
 
 module.exports = {
   read : function(req, res, next) {
@@ -56,7 +58,18 @@ module.exports = {
       res.send("DATA UPDATED")
     })
   },
-  auth : function(req, res){
+  auth : function(req, res) {
+    user.findOne({
+      where : {
+        username : req.body.username,
+        password : req.body.password
+      }
+    }).then((data, err)=>{
+      var token = jwt.sign({username : req.body.username}, 'RahasiaBro', {expiresIn: 120});
+      res.send(token)
+    }).catch((err)=>{
+      console.log(err);
+    })
 
   }
 }

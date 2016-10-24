@@ -7,13 +7,15 @@ var jwt = require('express-jwt');
 
 
 /* GET home page. */
-router.get('/auth', jwt({secret: 'RahasiaBro'}), function(req, res) {
-  if (!req.user.admin) {
-    return res.sendStatus(401);
-  } else {
-    res.sendStatus(200);
-  }
-});
+// router.get('/auth', jwt({secret: 'RahasiaBro'}), function(req, res) {
+//   if (!req.user.admin) {
+//     return res.sendStatus(401);
+//   } else {
+//     res.sendStatus(200);
+//   }
+// });
+
+router.get('/auth', userController.auth)
 
 router.get('/', userController.read);
 
