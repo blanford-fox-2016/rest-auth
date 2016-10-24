@@ -1,0 +1,29 @@
+{
+  "name": "rest-auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blanford-fox-2016/rest-auth.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blanford-fox-2016/rest-auth/issues"
+  },
+  "homepage": "https://github.com/blanford-fox-2016/rest-auth#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-jwt": "^5.1.0",
+    "jsonwebtoken": "^7.1.9",
+    "nodemon": "^1.11.0",
+    "pg": "^6.1.0",
+    "sequelize": "^3.24.5"
+  }
+}
