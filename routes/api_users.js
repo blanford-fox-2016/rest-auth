@@ -4,16 +4,17 @@ let models = require('../models');
 let user = models.User;
 let Sequelize = require('sequelize');
 let userController = require('../controllers/userController.js')
-let jwt = require('express-jwt');
+let ejwt = require('express-jwt');
+let jwt = require('jsonwebtoken');
 
-router.get('/', jwt({secret: 'secret'}), userController.read);
+router.get('/', ejwt({secret: 'secret'}), userController.read);
 
-router.get('/:id', userController.readOne);
+router.get('/:id', ejwt({secret: 'secret'}), userController.readOne);
 
-router.post('/', userController.create);
+router.post('/', ejwt({secret: 'secret'}), userController.create);
 
-router.put('/:id', userController.update);
+router.put('/:id', ejwt({secret: 'secret'}), userController.update);
 
-router.delete('/:id', userController.destroy);
+router.delete('/:id', ejwt({secret: 'secret'}), userController.destroy);
 
 module.exports = router;

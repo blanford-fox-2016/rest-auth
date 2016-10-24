@@ -1,17 +1,13 @@
 let models = require('../models');
 let user = models.User;
+let ejwt = require('express-jwt');
 let jwt = require('jsonwebtoken');
 
 module.exports = {
   read: (req, res, next) => {
-    if (token) {
-      console.log(token);
-      user.findAll().then((data, err) => {
-        res.json(data);
-      });
-    } else {
-      res.send('Token not found')
-    }
+    user.findAll().then((data, err) => {
+      res.json(data);
+    });
   },
 
   readOne: (req, res, next) => {
@@ -34,8 +30,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     }).then((data) => {
-        console.log('Data inserted successfully!');
-        res.json(data);
+        res.send(`Data inserted successfully! \n ${data}`);
     }).catch((err) => {
       if (err) {
         console.log(err);
@@ -56,7 +51,7 @@ module.exports = {
       id: req.params.id
       }
     }).then((data) => {
-        res.send('Data inserted successfully!');
+        res.send(`Data updated successfully!\n ${data}`);
     }).catch((err) => {
       if (err) {
         console.log(err);
@@ -87,7 +82,7 @@ module.exports = {
           if (user.password == req.body.password) {
             var token = jwt.sign({
               username: user.username
-            }, 'secret');
+            }, 'secret', {expiresIn : 60 * 60});
             res.send(`login success! token = ${token}`)
           } else {
             res.send('login failed!')
