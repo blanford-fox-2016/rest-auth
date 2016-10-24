@@ -3,7 +3,7 @@ var router = express.Router();
 var controller = require('../controllers/login')
 
 /* GET home page. */
-router.get('/', controller.getToken)
+router.post('/', controller.getToken)
 
 
 module.exports = router;

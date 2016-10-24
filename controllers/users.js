@@ -104,7 +104,8 @@ module.exports = {
                 } else {
                     Users.update({
                         username: req.body.username,
-                        fullname: req.body.fullname
+                        fullname: req.body.fullname,
+                        password: req.body.password
                     }, {
                         where: {
                             id: req.params.id

@@ -30,7 +30,7 @@ npm install --save pg
 ## curl command
 | Method          | curl command                                                                                                                                     |
 | --------------- | --------------- |
-| Get Token         | curl -X GET http://localhost:3000/api/auth |
+| Get Token         | curl -X POST http://localhost:3000/api/auth -d "username='USERNAME'&password='PASWORD'" |
 | View User         | curl -X GET http://localhost:3000/api/users?token=TOKEN |
 | View Single User  | curl -X GET http://localhost:3000/api/users/IDUSER/?token=TOKEN |
 | Add               | curl -X POST http://localhost:3000/api/users/?token=TOKEN -d "username='USERNAME'&fullname='FULLNAME'"|

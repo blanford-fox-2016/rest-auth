@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
     fullname: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     classMethods: {
