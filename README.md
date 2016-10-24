@@ -3,14 +3,14 @@ Rest Auth With Node Js & Express Generator
 
 ## How to check
 * Login
-> `curl -X POST http://localhost:3000/api/auth -d "username=admin&password=admin" | prettyjson`
+> `curl -X POST "http://localhost:3000/api/auth" -d "username=admin&password=admin" | prettyjson`
 * Save the token
-* Check login
-> `curl -X GET http://localhost:3000/api/users\?token\=(paste token) | prettyjson `
+* Check login & show all data users
+> `curl -X GET "http://localhost:3000/api/users?token=(paste token)" | prettyjson `
 * Check login no token in URL, false error message
-> `curl -X GET http://localhost:3000/api/users  | prettyjson`
+> `curl -X GET "http://localhost:3000/api/users"  | prettyjson`
 * Check login wrong token in URL, false error message
-> `curl -X GET http://localhost:3000/api/users\?token\=(wrong token) | prettyjson`
+> `curl -X GET "http://localhost:3000/api/users?token=(wrong token)" | prettyjson`
 
 ************************************
 

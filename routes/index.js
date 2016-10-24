@@ -3,7 +3,7 @@ var router = express.Router();
 var models = require('../models')
 var Users = models.Users
 var controller = require('../controller/index_controller')
-var jwt = require('jsonwebtoken')
+var jwt = require('express-jwt')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,7 +23,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNDc3MzA
 
 // router.post('/api/auth', controller.checkLogin)
 
-router.get('/api/users', controller.checkToken, controller.readAllData)
+// router.get('/api/users', jwt({secret: 'secret'}), controller.readAllData)
+router.get('/api/users', controller.readAllData)
 
 router.get('/api/users/:id', controller.readOneData)
 
@@ -37,29 +38,5 @@ router.get('/register', (req, res, next) => {
   res.render('register', {title: 'Rest-Auth With Node JS & Express Generator'})
 })
 
-// router.post('/signin', (req, res, next) => {
-//   console.log(req.body.username);
-//   Users.findOne({
-//     where: {
-//       username: req.body.username
-//     }
-//   }).then((data) => {
-//     console.log(data.dataValues);
-//     req.session.user_id = data.id
-//     req.session.user_name = data.username
-//     console.log(req.session.user_id);
-//     if(typeof req.session.user_id === "undefined"){
-//       res.redirect('/signin')
-//     }else{
-//       console.log(`asdfdfs`);
-//       res.render('signin', {title: 'Rest-Auth With Node JS & Express Generator', session_user_id : req.session.user_id, session_username: req.session.user_name})
-//     }
-//   }).catch((err) => {
-//     if(err) console.log(err);
-//     res.render('index', {
-//       title: 'Rest-Auth With Node JS & Express Generator',
-//       err: 'Input wrong'})
-//   })
-// })
 
 module.exports = router;

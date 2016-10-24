@@ -8,7 +8,28 @@ module.exports = {
     Users.findAll({
       order: 'id DESC'
     }).then((users) => {
-      res.json(users)
+      var token = req.body.token
+      if(token){
+        jwt.verify(token, 'secret', (err, decoded) => {
+          if(err){
+            res.json({
+              success: false,
+              message: "Failed to Authenticate token"
+            })
+          }else{
+            res.json({
+              success: true,
+              message: "Authenticate token success",
+              data: users
+            })
+          }
+        })
+      }else {
+        res.json({
+          success: false,
+          message: "No token provided"
+        })
+      }
     }).catch((err) => {
       if(err){
         console.log(err);
@@ -105,28 +126,5 @@ module.exports = {
         message: 'Authentication Failed, Username not valid'
       })
     })
-  },
-  checkToken: function(req, res){
-    var token = req.body.token
-    if(token){
-      jwt.verify(token, 'secret', (err, decoded) => {
-        if(err){
-          res.json({
-            success: false,
-            message: "Failed to Authenticate token"
-          })
-        }else{
-          res.json({
-            success: true,
-            message: "Authenticate token success"
-          })
-        }
-      })
-    }else {
-      res.json({
-        success: false,
-        message: "No token provided"
-      })
-    }
   }
 }
