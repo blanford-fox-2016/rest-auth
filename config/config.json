@@ -1,0 +1,7 @@
+{
+  "development": {
+    "username": "hacktiv8-12",
+    "database": "basic_restful",
+    "dialect": "postgres"
+  }
+}
