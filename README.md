@@ -28,6 +28,7 @@ Read One User by Id | curl -X GET http://localhost:3000/api/users/2
 Update User by Id | curl -X PUT http://localhost:3000/api/users/1 -d "username=UpdateUser&birthday=2010/01/01&email=UpdateEmail@ema.il"
 Delete User by Id | curl -X DELETE http://localhost:3000/api/users/4
 Get User Token with auth | curl -X GET localhost:3000/api/users/auth -d "username=admin&password=admin"
+do something if you have token | curl -X GET localhost:3000/api/users --header "authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNDc3MzIxNjc0LCJleHAiOjE0NzczMjI4NzR9.JSmjtVtSu0TknE8kwFOLf8R-e_No6DiCOMh3yEEG3Zc"
 ---
 ## Directory
 ```
