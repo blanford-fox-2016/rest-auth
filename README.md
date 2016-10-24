@@ -14,10 +14,10 @@ Rest Auth With Node Js & Express Generator
 
 
 * Add new data users
-> `curl -X POST "http://localhost:3000/api/users/" --header "authorization: bearer <token> "| prettyjson -d "username={newUsername}&password={newPassword}&email={newEmail}" | prettyjson`
+> `curl -X POST "http://localhost:3000/api/users/" --header "authorization: bearer <token> " -d "username={newUsername}&password={newPassword}&email={newEmail}" | prettyjson`
 
 * Update data users
-> `curl -X PUT "http://localhost:3000/api/users/" --header "authorization: bearer <token> "| prettyjson -d "username={newUsername}&password={newPassword}&email={newEmail}" | prettyjson`
+> `curl -X PUT "http://localhost:3000/api/users/" --header "authorization: bearer <token> " -d "username={newUsername}&password={newPassword}&email={newEmail}" | prettyjson`
 
 * Delete data users
 > `curl -X DELETE "http://localhost:3000/api/users/{id}" --header "authorization: bearer <token> `
