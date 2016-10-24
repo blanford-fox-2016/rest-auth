@@ -4,32 +4,33 @@ var jwt = require('jsonwebtoken')
 
 module.exports = {
   readAllData: function (req, res){
-    console.log(`test`);
+    // console.log(`test`);
     Users.findAll({
       order: 'id DESC'
     }).then((users) => {
-      var token = req.body.token
-      if(token){
-        jwt.verify(token, 'secret', (err, decoded) => {
-          if(err){
-            res.json({
-              success: false,
-              message: "Failed to Authenticate token"
-            })
-          }else{
-            res.json({
-              success: true,
-              message: "Authenticate token success",
-              data: users
-            })
-          }
-        })
-      }else {
-        res.json({
-          success: false,
-          message: "No token provided"
-        })
-      }
+      // var token = req.body.token
+      // if(token){
+      //   jwt.verify(token, 'secret', (err, decoded) => {
+      //     if(err){
+      //       res.json({
+      //         success: false,
+      //         message: "Failed to Authenticate token"
+      //       })
+      //     }else{
+      //       res.json({
+      //         success: true,
+      //         message: "Authenticate token success",
+      //         data: users
+      //       })
+      //     }
+      //   })
+      // }else {
+      //   res.json({
+      //     success: false,
+      //     message: "No token provided"
+      //   })
+      // }
+      res.json(users)
     }).catch((err) => {
       if(err){
         console.log(err);
@@ -64,25 +65,26 @@ module.exports = {
       }
     })
   },
-  updateData: function(req, res, id) {
+  updateData: function(req, res) {
     Users.update({
       username: req.body.username,
       password: req.body.password,
       email: req.body.email
     }, {
       where: {
-        id : id
+        id : req.params.id
       }
     }).then((user) => {
       console.log(`Updated success`);
       res.json(user)
     }).catch((err) => {
       if(err){
+        console.log(`ini errororororoor`);
         console.log(err);
       }
     })
   },
-  deleteData: function(req, res, id) {
+  deleteData: function(req, res) {
     Users.destroy({
       where: {
         id: req.params.id

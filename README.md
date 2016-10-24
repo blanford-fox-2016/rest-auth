@@ -4,11 +4,27 @@ Rest Auth With Node Js & Express Generator
 ## How to check
 * Login
 > `curl -X POST "http://localhost:3000/api/auth" -d "username=admin&password=admin" | prettyjson`
+
 * Save the token
 * Check login & show all data users
-> `curl -X GET "http://localhost:3000/api/users?token=(paste token)" | prettyjson `
+> `curl -X GET "http://localhost:3000/api/users" --header "authorization: bearer <token> "| prettyjson `
+
+* Show only one data users
+> `curl -X GET "http://localhost:3000/api/users/{id}" --header "authorization: bearer <token> "| prettyjson `
+
+
+* Add new data users
+> `curl -X POST "http://localhost:3000/api/users/" --header "authorization: bearer <token> "| prettyjson -d "username={newUsername}&password={newPassword}&email={newEmail}" | prettyjson`
+
+* Update data users
+> `curl -X PUT "http://localhost:3000/api/users/" --header "authorization: bearer <token> "| prettyjson -d "username={newUsername}&password={newPassword}&email={newEmail}" | prettyjson`
+
+* Delete data users
+> `curl -X DELETE "http://localhost:3000/api/users/{id}" --header "authorization: bearer <token> `
+
 * Check login no token in URL, false error message
 > `curl -X GET "http://localhost:3000/api/users"  | prettyjson`
+
 * Check login wrong token in URL, false error message
 > `curl -X GET "http://localhost:3000/api/users?token=(wrong token)" | prettyjson`
 
@@ -115,7 +131,6 @@ How to start server :
     ├── index.jade
     ├── layout.jade
     └── register.jade
-
 ```
 ************************************
 

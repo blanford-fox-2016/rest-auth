@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 /*
 Testing token :
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNDc3MzA5ODMyLCJleHAiOjE0NzczMTM0MzJ9.mRLgUMDW9589MnRTVW_s87ntaUq-wWp2dUh1tQrY5xA"
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNDc3MzE1Nzk3LCJleHAiOjE0NzczMTkzOTd9.7IQ1KvRG5-CCZwxJf_0b-SrtGn0qk9DEo9lXI_s99ek
 */
 // missed
 // router.get('/api/users?:token', (req, res) => {
@@ -21,18 +21,22 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNDc3MzA
 //   controller.readAllData
 // })
 
-// router.post('/api/auth', controller.checkLogin)
+// generate token
+router.post('/api/auth', controller.checkLogin)
 
-// router.get('/api/users', jwt({secret: 'secret'}), controller.readAllData)
-router.get('/api/users', controller.readAllData)
+//read all data
+router.get('/api/users', jwt({secret: 'secret'}), controller.readAllData)
 
-router.get('/api/users/:id', controller.readOneData)
+//read one data
+router.get('/api/users/:id', jwt({secret: 'secret'}), controller.readOneData)
 
-router.post('/api/users', controller.addData)
+//add new user
+router.post('/api/users', jwt({secret: 'secret'}), controller.addData)
 
-router.put('/api/users/:id', controller.updateData)
+//update user
+router.put('/api/users/:id', jwt({secret: 'secret'}), controller.updateData)
 
-router.delete('/api/users/:id', controller.deleteData)
+router.delete('/api/users/:id', jwt({secret: 'secret'}), controller.deleteData)
 
 router.get('/register', (req, res, next) => {
   res.render('register', {title: 'Rest-Auth With Node JS & Express Generator'})
