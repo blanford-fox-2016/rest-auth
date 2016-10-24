@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 
 // get token
 // /api/token
-router.get('/api/token', jwte({secret:'ada'}), users_controller.getLogin );
+router.get('/api/token', users_controller.getLogin );
 
 // Get all the users
 // /api/users
