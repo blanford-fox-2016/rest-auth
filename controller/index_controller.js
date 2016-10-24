@@ -107,7 +107,7 @@ module.exports = {
     })
   },
   checkToken: function(req, res){
-    var token = req.query.token
+    var token = req.body.token
     if(token){
       jwt.verify(token, 'secret', (err, decoded) => {
         if(err){
