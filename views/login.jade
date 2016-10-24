@@ -23,17 +23,9 @@ block content
         | This is a simple example of REST API Auth implementation using Node.JS, express, jwt, and sequelize using PostgreSQL database.
 
   .container
-    form.form-horizontal(action='/api/users' method='post')
+    form.form-horizontal(action='/api/auth' method='post')
       fieldset
-        legend User Registration
-        .form-group
-          label.col-lg-2.control-label.text-left(for='inputEmail') Name
-          .col-lg-10
-            input#inputName.form-control(type='text', name='name', placeholder='Enter your name' required)
-        .form-group
-          label.col-lg-2.control-label.text-left(for='inputEmail') Email
-          .col-lg-10
-            input#inputEmail.form-control(type='email', name='email', placeholder='Enter your Email' required)
+        legend User Login
         .form-group
           label.col-lg-2.control-label.text-left(for='inputUsername') Username
           .col-lg-10
