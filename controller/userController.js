@@ -62,14 +62,23 @@ module.exports = {
     user.findOne({
       where : {
         username : req.body.username,
-        password : req.body.password
+        // password : req.body.password
       }
-    }).then((data, err)=>{
-      var token = jwt.sign({username : req.body.username}, 'RahasiaBro', {expiresIn: 120});
-      res.send(token)
-    }).catch((err)=>{
-      console.log(err);
+    }).then((data)=>{
+      if (!data) {
+        res.json({success: false, message: 'Authentication Failed. User Not Found'})
+      } if (data){
+        if (data.password != req.body.password){
+          res.json({success: false, massage: 'Authentication Failed. Wrong Password'})
+        } else {
+          var token = jwt.sign({username: "admin"}, 'RahasiaBro', {expiresIn: 1200});
+          res.json({
+            success: true,
+            message: 'Enjoy your token',
+            token : token
+          })
+        }
+      }
     })
-
   }
 }

@@ -3,28 +3,19 @@ var router = express.Router();
 var models = require('../models');
 var user = models.User;
 var userController = require('../controller/userController.js')
-var jwt = require('express-jwt');
+var ejwt = require('express-jwt');
 
-
-/* GET home page. */
-// router.get('/auth', jwt({secret: 'RahasiaBro'}), function(req, res) {
-//   if (!req.user.admin) {
-//     return res.sendStatus(401);
-//   } else {
-//     res.sendStatus(200);
-//   }
-// });
 
 router.get('/auth', userController.auth)
 
-router.get('/', userController.read);
+router.get('/', ejwt({secret:'RahasiaBro'}), userController.read);
 
-router.get('/:id', userController.readOne);
+router.get('/:id', ejwt({secret:'RahasiaBro'}), userController.readOne);
 
-router.post('/', userController.create);
+router.post('/', ejwt({secret:'RahasiaBro'}), userController.create);
 
-router.delete('/:id', userController.destroy);
+router.delete('/:id', ejwt({secret:'RahasiaBro'}), userController.destroy);
 
-router.put('/:id', userController.update);
+router.put('/:id', ejwt({secret:'RahasiaBro'}), userController.update);
 
 module.exports = router;
