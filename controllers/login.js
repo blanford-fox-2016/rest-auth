@@ -1,22 +1,14 @@
 var models = require('../models')
 var Users = models.User
+var jwt = require('jsonwebtoken');
+var token = ""
 
 module.exports = {
-    loginPage: function (req, res) {
-        res.render('index', {title: "Login"})
-    },
-
-    loginPost: function (req, res) {
-        Users.findOne({
-            where: {
-                id: req.body.username
-            }
-        }).catch(function (err) {
-            res.send(err.message)
-        }).then(function () {
-
-            res.redirect('/api/users')
-        })
+    getToken: function (req, res) {
+        var token = jwt.sign({
+            data: "test"
+        }, 'secret', { expiresIn: 60 });
+        res.json(token)
     }
 
 }

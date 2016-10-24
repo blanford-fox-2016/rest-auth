@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+
+<table class="table">
+    <tr>
+        <td>Id.</td>
+        <td>Username</td>
+        <td>Full Name</td>
+    </tr>
+
+    <% for (var i = 0; i< user.length; i++) { %>
+    <tr>
+        <td><%= user[i].id%></td>
+        <td><%= user[i].username%></td>
+        <td><%= user[i].fullname%></td>
+    </tr>
+    <% } %>
+</table>
+</body>
+</html>
