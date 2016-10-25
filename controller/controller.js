@@ -7,7 +7,7 @@ module.exports = {
   getToken:function(req,res,next){
     var username = req.body.username
     password = req.body.password
-    var token = jwt.sign({ foo: 'bar' }, 'shhhhh', { expiresIn: 600 });
+    var token = jwt.sign({ foo: 'bar' }, 'shhhhh', { expiresIn: 6000 });
     user.findOne({
       where:{
         username:username,
