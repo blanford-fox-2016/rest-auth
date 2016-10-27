@@ -1,4 +1,4 @@
-const Data = require('./app/models/datas')
+const Data = require('../models/datas')
 
 module.exports = {
     findUser: findUser,
